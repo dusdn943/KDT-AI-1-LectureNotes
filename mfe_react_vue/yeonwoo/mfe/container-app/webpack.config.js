@@ -2,9 +2,7 @@ const path = require("path")
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const ExternalTemplateRemotePlugin = require('external-remotes-plugin')
-
 const deps = require("./package.json").dependencies
-
 module.exports = (_, argv) => ({
   mode: "development",
   entry: "./src/index",
@@ -58,7 +56,8 @@ module.exports = (_, argv) => ({
       name: "containerApp",
       remotes: {
         vueModuleApp: 'vueModuleApp@http://localhost:3001/remoteEntry.js',
-        vueNavigationApp: 'vueNavigationApp@http://localhost:3002/remoteEntry.js'
+        vueNavigationApp: 'vueNavigationApp@http://localhost:3002/remoteEntry.js',
+        reactModuleApp: 'reactModuleApp@http://localhost:3003/remoteEntry.js',
       },
       shared: {
         ...deps,

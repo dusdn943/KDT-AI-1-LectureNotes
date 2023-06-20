@@ -1,7 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const ExternalTemplateRemotesPlugin = require('external-remotes-plugin')
-
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
   mode: 'development',
@@ -12,7 +11,6 @@ module.exports = (_, argv) => ({
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
   },
-
   devServer: {
     port: 3003,
     historyApiFallback: true,
@@ -43,6 +41,12 @@ module.exports = (_, argv) => ({
           loader: "babel-loader",
         },
       },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: "babel-loader",
+        options: { presets: ['@babel/env', '@babel/preset-react']},
+      },
     ],
   },
 
@@ -52,10 +56,11 @@ module.exports = (_, argv) => ({
       filename: "remoteEntry.js",
       exposes: {
         './ReactSample': './src/bootstrap.js',
-        // './Counter': './src/components/Counter.js'
+        './Counter': './src/components/Counter.js'
       },
       shared: {
         ...deps,
+
         react: {
           singleton: true,
           requiredVersion: deps.react,
