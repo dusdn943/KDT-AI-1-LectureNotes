@@ -22,17 +22,14 @@ const BoardRegisterForm = ({ onRegister }) => {
 
   const handleSubmit = useCallback(
     (e) => {
-        // e (event)
-        // a 태그나 submit 태그는 누르게 되면 href 를 통해 이동하거나 , 창이 새로고침하여 실행이 되는데
-        // preventDefault 를 통해 이러한 동작을 막아줄 수 있습니다.
-        // submit은 작동 되는데 form 안에 submit 역할을 하는 버튼을 눌렀어도 새로 실행하지 않게 하고싶을 경우 사용
-        // (action 속성값으로 파라미터 전달하면서 페이지 이동하는데 이러한 동작을 
-        // 막기 위해 각 태그별로 preventDefault를 이벤트 리스너에 등록하면 막을 수 있다.)
+  
+        // Vue에서 prevent() 써서 submit 막고 커스텀 submit 처리하려고함
         e.preventDefault();
 
         onRegister(title, content, writer)
     },
     [title, content, writer, onRegister]
+    // title, content, writer, onRegister 중 하나라도 바뀌면 실행
   )
 
   return (
