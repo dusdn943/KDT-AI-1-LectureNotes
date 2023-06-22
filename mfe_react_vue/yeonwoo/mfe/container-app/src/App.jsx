@@ -2,16 +2,17 @@ import React, { useEffect, useRef, useState } from "react";
 import { mount } from 'vueModuleApp/Sample';
 import { navigationMount } from 'vueNavigationApp/VueNavigation';
 import Counter from 'reactModuleApp/Counter';
+import BoardApp from 'reactBoardApp/BoardApp'
+import { BrowserRouter } from 'react-router-dom'
 
 const App = () => {
   const vueRef = useRef(null)
-
+  
   const vuetifyNavigationRef = useRef(null)
   useEffect(() => {
     mount(vueRef.current)
     navigationMount(vuetifyNavigationRef.current)
   }, []);
-  
   return (
     <div>
       <div style={{ zIndex: 999 }} ref={vuetifyNavigationRef}/>
@@ -22,6 +23,9 @@ const App = () => {
         <div ref={vueRef}/>
       </div>
       <Counter/>
+      <BrowserRouter>
+        <BoardApp/>
+      </BrowserRouter>
     </div>
   )
 };

@@ -56,6 +56,7 @@ module.exports = (_, argv) => ({
       filename: "remoteEntry.js",
       exposes: {
         './ReactSample': './src/bootstrap.js',
+        // Counter 리액트 자체 컴포넌트
         './Counter': './src/components/Counter.js'
       },
       shared: {

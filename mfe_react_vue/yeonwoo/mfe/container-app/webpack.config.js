@@ -58,6 +58,7 @@ module.exports = (_, argv) => ({
         vueModuleApp: 'vueModuleApp@http://localhost:3001/remoteEntry.js',
         vueNavigationApp: 'vueNavigationApp@http://localhost:3002/remoteEntry.js',
         reactModuleApp: 'reactModuleApp@http://localhost:3003/remoteEntry.js',
+        reactBoardApp: 'reactBoardApp@http://localhost:3004/remoteEntry.js',
       },
       shared: {
         ...deps,
@@ -68,6 +69,9 @@ module.exports = (_, argv) => ({
         "react-dom": {
           singleton: true,
           requiredVersion: deps["react-dom"],
+        },
+        "react-router-dom": {
+          singleton: true
         }
       }
     }),
