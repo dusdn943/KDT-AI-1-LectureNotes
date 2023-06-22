@@ -48,6 +48,7 @@
         <router-link to="/github-sign-in-page">Github 로그인</router-link> |
         <router-link to="/after-login/sample">로그인 이후 작업 테스트</router-link> |
         <router-link to="/chat-page">웹소켓 채팅 테스트</router-link> |
+        <router-link to="/traffic-test-page">통신 테스트</router-link> |
 
       </nav>
     </div>
