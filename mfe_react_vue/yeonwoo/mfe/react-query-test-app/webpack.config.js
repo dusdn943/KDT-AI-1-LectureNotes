@@ -1,7 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const ExternalTemplateRemotesPlugin = require('external-remotes-plugin')
-
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
   mode: 'development',
@@ -13,7 +12,7 @@ module.exports = (_, argv) => ({
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
   },
   devServer: {
-    port: 3005,
+    port: 3006,
     historyApiFallback: true,
     hot: true,
     headers: {
@@ -52,16 +51,16 @@ module.exports = (_, argv) => ({
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "reactZustandTodoApp",
+      name: "reactQueryTestApp",
       filename: "remoteEntry.js",
       exposes: {
-        './ZustandTodoAppBootstrap': './src/bootstrap.js',
-        './ZustandTodoApp': './src/TodoApp.jsx'
+        './ReactQueryTestAppBootstrap': './src/bootstrap.js',
+        './ReactQueryTest': './src/ReactQueryTestApp.jsx'
       },
-      exposes: {},
       shared: {
         ...deps,
         react: {
+  
           singleton: true,
           requiredVersion: deps.react,
         },
