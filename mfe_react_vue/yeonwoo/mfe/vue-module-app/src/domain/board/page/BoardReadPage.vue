@@ -16,7 +16,9 @@
 <script>
 import BoardReadForm from '../components/BoardReadForm.vue'
 import { mapActions, mapState } from 'vuex';
+
 const boardModule = 'boardModule'
+
 export default {
     components: {
         BoardReadForm

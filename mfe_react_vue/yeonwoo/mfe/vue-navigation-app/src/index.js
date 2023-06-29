@@ -1,6 +1,5 @@
 import("./bootstrap");
 
-
 /*
 @babel/preset-typescript
 @types/webfontloader

@@ -3,6 +3,7 @@ const { VueLoaderPlugin } = require("vue-loader");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+
 module.exports = (_, argv) => ({
   mode: 'development',
   cache: false,
@@ -13,7 +14,7 @@ module.exports = (_, argv) => ({
   target: 'web',
   entry: path.resolve(__dirname, './src/index.js'),
   output: {
-    publicPath: 'auto',
+    publicPath: 'http://localhost:3001/',
   },
   resolve: {
     extensions: [".vue", ".js", ".json"],
@@ -72,6 +73,7 @@ module.exports = (_, argv) => ({
     static: {
       directory: path.join(__dirname),
     },
+    historyApiFallback: true,
     compress: true,
     port: 3001,
     hot: true,

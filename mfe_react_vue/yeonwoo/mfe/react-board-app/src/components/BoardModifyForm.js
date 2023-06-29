@@ -1,25 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+
 const BoardModifyForm = ({ board, isLoading, onModify }) => {
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
+
   const handleChangeTitle = (e) => {
     setTitle(e.target.value)
   }
+
   const handleChangeContent = (e) => {
     setContent(e.target.value)
   }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     
     onModify(board.boardId, title, content, board.writer)
   }
+
   useEffect(() => {
     if (board) {
       setTitle(board.title)
       setContent(board.content)
     }
   }, [board])
+
   return (
     <div align="center">
       <h2>게시물 수정</h2>
@@ -55,9 +61,10 @@ const BoardModifyForm = ({ board, isLoading, onModify }) => {
                         </tr>
                     </tbody>
                 </table>
+
                 <div>
                     <button type="submit">수정</button>
-                    <Link to={`/read/${board.boardId}`}>취소</Link>
+                    <Link to={`/react-board-app/read/${board.boardId}`}>취소</Link>
                 </div>
             </form>
         </div>
@@ -65,4 +72,5 @@ const BoardModifyForm = ({ board, isLoading, onModify }) => {
     </div>
   )
 }
+
 export default BoardModifyForm

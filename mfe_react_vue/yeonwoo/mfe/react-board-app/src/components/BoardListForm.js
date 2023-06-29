@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom' // imrr
+
 const BoardListForm = ({ boards, isLoading }) => {
   return (
     <div>
@@ -7,7 +8,7 @@ const BoardListForm = ({ boards, isLoading }) => {
       { isLoading && "로딩중 ..........." }
       { !isLoading && boards && (
         <>
-          <Link to="/register">글쓰기</Link>
+          <Link to="/react-board-app/register">글쓰기</Link>
           <table border="1">
             <thead>
               <tr>
@@ -36,7 +37,7 @@ const BoardListForm = ({ boards, isLoading }) => {
                 <tr key={board.boardId}>
                   <td align="center">{ board.boardId }</td>
                   <td align="left">
-                    <Link to={`/read/${board.boardId}`}>{ board.title }</Link>
+                    <Link to={`/react-board-app/read/${board.boardId}`}>{ board.title }</Link>
                   </td>
                   <td align="right">{ board.writer }</td>
                   <td align="center">{ board.createDate }</td>
@@ -49,4 +50,5 @@ const BoardListForm = ({ boards, isLoading }) => {
     </div>
   )
 }
+
 export default BoardListForm

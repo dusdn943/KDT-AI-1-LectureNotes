@@ -1,6 +1,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const ExternalTemplateRemotesPlugin = require('external-remotes-plugin')
+
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
   mode: 'development',
@@ -60,7 +61,6 @@ module.exports = (_, argv) => ({
       shared: {
         ...deps,
         react: {
-  
           singleton: true,
           requiredVersion: deps.react,
         },

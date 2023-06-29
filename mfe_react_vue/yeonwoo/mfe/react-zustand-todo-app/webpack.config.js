@@ -58,7 +58,6 @@ module.exports = (_, argv) => ({
         './ZustandTodoAppBootstrap': './src/bootstrap.js',
         './ZustandTodoApp': './src/TodoApp.jsx'
       },
-      exposes: {},
       shared: {
         ...deps,
         react: {

@@ -1,5 +1,6 @@
 <template lang="">
     <div>
+        <!-- event 중복 전파 방지를 위해 prevent.stop을 해야함 -->
         <form @submit.prevent.stop="onSubmit">
             <table>
                 <tr>

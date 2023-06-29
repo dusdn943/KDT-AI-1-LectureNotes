@@ -22,10 +22,9 @@ const BoardRegisterForm = ({ onRegister }) => {
 
   const handleSubmit = useCallback(
     (e) => {
-  
-        // Vue에서 prevent() 써서 submit 막고 커스텀 submit 처리하려고함
+        // vue에서 prevent() 써서 submit 막고 커스텀 submit 처리하려고함
         e.preventDefault();
-
+        
         onRegister(title, content, writer)
     },
     [title, content, writer, onRegister]
@@ -62,7 +61,7 @@ const BoardRegisterForm = ({ onRegister }) => {
 
         <div>
           <button type="submit">등록</button>
-          <Link to="/">취소</Link>
+          <Link to="/react-board-app">취소</Link>
         </div>
       </form>
     </div>
