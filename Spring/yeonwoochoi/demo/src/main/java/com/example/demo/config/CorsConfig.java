@@ -18,6 +18,7 @@ public class CorsConfig implements WebMvcConfigurer {
                         "http://localhost:3000",
                         "http://localhost:3001", // vue 게시판
                         "http://localhost:3004", // react로 만든 게시판
+                        "http://localhost:3008",
                         "http://localhost:3009",
                         "http://localhost:3010",
                         "http://localhost:3012"
