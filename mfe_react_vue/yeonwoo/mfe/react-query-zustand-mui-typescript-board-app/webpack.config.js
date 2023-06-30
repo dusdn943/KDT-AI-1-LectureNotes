@@ -1,7 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const ExternalTemplateRemotesPlugin = require('external-remotes-plugin')
-
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
   mode: 'development',
@@ -44,12 +43,19 @@ module.exports = (_, argv) => ({
       },
     ],
   },
-
   plugins: [
     new ModuleFederationPlugin({
       name: "reactQueryZustandMuiTypescriptBoardApp",
       filename: "remoteEntry.js",
-      exposes: {},
+      // 결론적으로 현재 React Container에
+      // remotes React Component를 붙이는 것이기 때문에 가능함
+      // ( 같은 React끼리 )
+      exposes: {
+        './TypescriptBoardListPage': './src/page/TypescriptBoardListPage.tsx',
+        './TypescriptBoardReadPage': './src/page/TypescriptBoardReadPage.tsx',
+        './TypescriptBoardRegisterPage': './src/page/TypescriptBoardRegisterPage.tsx',
+        './TypescriptBoardModifyPage': './src/page/TypescriptBoardModifyPage.tsx',
+      },
       shared: {
         ...deps,
         react: {
@@ -63,10 +69,11 @@ module.exports = (_, argv) => ({
         "react-router-dom": {
           singleton: true,
           requiredVersion: deps["react-router-dom"]
-        }
+        },
       },
     }),
     new HtmlWebPackPlugin({
+  
       template: "./public/index.html",
       chunks: ['main'],
     }),

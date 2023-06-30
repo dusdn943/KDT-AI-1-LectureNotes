@@ -2,9 +2,7 @@ const path = require("path")
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const ExternalTemplateRemotePlugin = require('external-remotes-plugin')
-
 const deps = require("./package.json").dependencies
-
 module.exports = (_, argv) => ({
   mode: "development",
   entry: "./src/index",
@@ -58,14 +56,15 @@ module.exports = (_, argv) => ({
       name: "containerApp",
       remotes: {
         // vueModuleApp은 Vue Counter App과 Vue Board App이 합쳐져 있음
-        vueModuleApp: 'vueModuleApp@http://localhost:3001/remoteEntry.js',
+        // vueModuleApp: 'vueModuleApp@http://localhost:3001/remoteEntry.js',
         vueNavigationApp: 'vueNavigationApp@http://localhost:3002/remoteEntry.js',
         // reactModuleApp은 사실상 React Counter App임
-        reactModuleApp: 'reactModuleApp@http://localhost:3003/remoteEntry.js',
-        reactBoardApp: 'reactBoardApp@http://localhost:3004/remoteEntry.js',
-        reactZustandTodoApp: 'reactZustandTodoApp@http://localhost:3005/remoteEntry.js',
-        reactQueryTestApp: 'reactQueryTestApp@http://localhost:3006/remoteEntry.js',
-        vuetifyTailwindBoardApp: 'vuetifyTailwindBoardApp@http://localhost:3007/remoteEntry.js',
+        // reactModuleApp: 'reactModuleApp@http://localhost:3003/remoteEntry.js',
+        // reactBoardApp: 'reactBoardApp@http://localhost:3004/remoteEntry.js',
+        // reactZustandTodoApp: 'reactZustandTodoApp@http://localhost:3005/remoteEntry.js',
+        // reactQueryTestApp: 'reactQueryTestApp@http://localhost:3006/remoteEntry.js',
+        // vuetifyTailwindBoardApp: 'vuetifyTailwindBoardApp@http://localhost:3007/remoteEntry.js',
+        reactQueryZustandMuiTypescriptBoardApp: 'reactQueryZustandMuiTypescriptBoardApp@http://localhost:3008/remoteEntry.js',
       },
       shared: {
         ...deps,
@@ -79,8 +78,13 @@ module.exports = (_, argv) => ({
         },
         "react-router-dom": {
           singleton: true
+        },
+        "react-query": {
+          singleton: true,
+          requiredVersion: deps["react-query"]
         }
       }
     }),
+  
   ],
 });
