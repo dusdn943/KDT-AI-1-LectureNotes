@@ -3,7 +3,6 @@ const { VueLoaderPlugin } = require("vue-loader");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-
 module.exports = (_, argv) => ({
   mode: 'development',
   cache: false,
@@ -63,9 +62,11 @@ module.exports = (_, argv) => ({
         './boardRegisterBootstrap': './src/domain/board/bootstrapper/boardRegisterBootstrap',
         './boardReadBootstrap': './src/domain/board/bootstrapper/boardReadBootstrap',
         './boardModifyBootstrap': './src/domain/board/bootstrapper/boardModifyBootstrap',
+        './boardListBootstrap': './src/domain/board/bootstrapper/boardListBootstrap',
       },
       shared: require("./package.json").dependencies
     }),
+
     new HtmlWebPackPlugin({
       template: path.resolve(__dirname, './public/index.html'),
       chunks: ['main'],
