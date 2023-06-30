@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
-
 import TypescriptBoardListPage from 'reactQueryZustandMuiTypescriptBoardApp/TypescriptBoardListPage'
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -13,17 +11,11 @@ const queryClient = new QueryClient({
     }
   }
 })
-const ReactTypescriptMuiBoardRoutes = ({ naviHeight }) => {
-  useEffect(() => {
-    const contentWrapper = document.getElementById('content-wrapper')
-    if (contentWrapper && naviHeight) {
-      const marginTop = (naviHeight + 20) + 'px'
-      contentWrapper.style.marginTop = marginTop
-    }
-  })
+
+const ReactTypescriptMuiBoardRoutes = () => {
   return (
     <div>
-      <div di="content-wrapper" style={{ position: 'relative' }}>
+      <div style={{ position: 'relative' }}>
         <QueryClientProvider client={queryClient}>
           <Routes>
             <Route path="/react-query-zustand-mui-typescript-board-app" element={<TypescriptBoardListPage/>} />
@@ -35,6 +27,5 @@ const ReactTypescriptMuiBoardRoutes = ({ naviHeight }) => {
       </div>
     </div>
   )
-
 }
 export default ReactTypescriptMuiBoardRoutes
