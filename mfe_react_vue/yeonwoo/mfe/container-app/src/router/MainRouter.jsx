@@ -92,7 +92,10 @@ const MainRouter = () => {
                 }/> */}
             </Routes>
             {/* <ReactBoardRoutes/> */}
-            <ReactTypescriptMuiBoardRoutes naviHeight={naviHeight}/>
+            {/* <ReactTypescriptMuiBoardRoutes naviHeight={naviHeight}/> */}
+            <ReactTypescriptMuiBoardRoutes>
+              
+            </ReactTypescriptMuiBoardRoutes>
           </BrowserRouter>
         </Suspense>
     </div>
