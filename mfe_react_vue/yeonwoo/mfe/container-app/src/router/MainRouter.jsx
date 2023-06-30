@@ -9,6 +9,7 @@ import Home from './containerApp/Home';
 import ReactCounterAppRouter from './reactModuleApp/ReactCounterAppRouter';
 import ReactBoardRoutes from './reactBoardApp/ReactBoardRoutes';
 import ReactTypescriptMuiBoardRoutes from './muiTypescriptBoardApp/ReactTypescriptMuiBoardRoutes';
+import VueModuleAppRegisterRouter from './vueModuleApp/VueModuleAppRegisterRouter';
 
 const MainRouter = () => {
   const vueModuleRef = useRef(null)
@@ -93,6 +94,13 @@ const MainRouter = () => {
             </Routes>
             <ReactBoardRoutes/>
             <ReactTypescriptMuiBoardRoutes/>
+            <Routes>
+              <Route
+                exact path="/vue-module-app/board-register-page"
+                element={
+                  <VueModuleAppRegisterRouter/>
+                }/>
+            </Routes>
           </BrowserRouter>
         </Suspense>
     </div>
